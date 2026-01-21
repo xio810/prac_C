@@ -3,14 +3,9 @@
 int main()
 {
     /*
-입력받은 문자를 거꾸로 출력
-hello
-olleh
-
-program
-margorp
- */
-    char str[] = "";
+    회문인지 아닌지 체크
+    */
+    char str[100] = "";
     scanf("%s", str);
 
     int length = 0;
@@ -22,23 +17,24 @@ margorp
 
     char temp;
 
-    for (int i = 0; i < length / 2; i++)
+    int pa = 1; // pa=1로 두어야함
+
+    for (int i = 0; i < length / 2; i++) // 0,1
     {
-        temp = str[i];
-        str[i] = str[length - i - 1];
-        str[length - i - 1] = temp;
+        if (str[i] != str[length - i - 1]) // arr[0] == arr[5-0-1]; arr[1] == arr[5-1-1];
+        {
+            pa = 0;
+        }
     }
 
-    for (int i = 0; i < length; i++)
+    if (pa == 1)
     {
-
-        printf("%c ", str[i]);
+        printf("회문\n");
+    }
+    else
+    {
+        printf("회문아님\n");
     }
 
-    /*
-    1,2,3,4,5
-    1<->5
-    2<->4
-    */
     return 0;
 }
