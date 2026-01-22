@@ -3,56 +3,45 @@
 
 int main()
 {
-    // 회문찾기
-    // noon -> 회문
-    // prom -> 회문아님
-    // noan -> 회문아님
+    /*
+    배열길이와 입력받는 횟수를 scanf로 받는다.
+    배열안에 길이만큼 숫자를 입력한다.
+    ex) arr[5] = {1,2,3,4,5};
+    i와 j라는 변수를 통해 arr[0]<->arr[1]같이 배열안의 들어간 수의 위치를 바꾼다.
+    그러고 나서 출력한다.
+    */
+    printf("배열 길이 입력 : ");
+    int arr_length = 0; // 배열 길이 입력받을 변수
+    scanf("%d", &arr_length);
+    int arr[arr_length] = {};
+    // printf("%d", arr_length);
 
-    char arr[100] = ""; // 배열초기화
+    printf("몇 번 입력 : ");
+    int how_many = 0; // 몇번 입력받을지 정하는 변수
+    scanf("%d", &how_many);
+    // printf("%d", how_many);
 
-    printf("문자 입력 : ");
-    scanf("%s", arr); // 문자열 입력받기
-
-    // int length = strlen(arr);
-    int length = 0;
-
-    for (int i = 0; arr[i] != '\0'; i++) // 입력받은 문자열 길이찾기
+    // 배열 안에 값 넣기
+    for (int i = 0; i < arr_length; i++)
     {
-        length++;
+        arr[i] = i + 1; // int arr[5] = {1,2,3,4,5};
     }
 
-    int palindrome = 1; // 입력받은 문자가 회문이라고 가정을 한다
+    int temp = 0;
+    int i = 0, j = 0;
 
-    for (int i = 0; i < length / 2; i++) // 인덱스0부터 돌면서 양끝 단어가 같은지 판별
+    for (int k = 0; k < how_many; k++) // 0,1,2,3번 반복
     {
-        // 대문자-소문자 변환과정
-        char str1 = arr[i];
-        char str2 = arr[length - i - 1];
+        scanf("%d %d", &i, &j); // 1,2번 입력하면, arr[0] <-> arr[1]
 
-        if ('A' <= str1 && str1 <= 'Z') // A <= str1 <= Z //N이 나오면 n으로 바꾸는 if문
-        {
-            str1 = str1 + 32;
-        }
-
-        if ('A' <= str2 && str2 <= 'Z')
-        {
-            str2 = str2 + 32;
-        }
-
-        // 양 끝 단어가 같지 않으면 회문변수 0으로
-        if (str1 != str2)
-        {
-            palindrome = 0;
-        }
+        temp = arr[i - 1];       // 1
+        arr[i - 1] = arr[j - 1]; // arr[0]안에
+        arr[j - 1] = temp;
     }
 
-    if (palindrome == 1)
+    for (int i = 0; i < arr_length; i++)
     {
-        printf("회문입니다\n");
-    }
-    else
-    {
-        printf("아닙니다\n");
+        printf("%d ", arr[i]);
     }
 
     return 0;
