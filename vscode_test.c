@@ -4,44 +4,44 @@
 int main()
 {
     /*
-    배열길이와 입력받는 횟수를 scanf로 받는다.
-    배열안에 길이만큼 숫자를 입력한다.
-    ex) arr[5] = {1,2,3,4,5};
-    i와 j라는 변수를 통해 arr[0]<->arr[1]같이 배열안의 들어간 수의 위치를 바꾼다.
-    그러고 나서 출력한다.
+    문자를 소문자로 입력받는다. 예시 'apple'
+    입력받은 문자 안에서 같은 단어가 몇개 있는지 센다.
+    a : 1, p : 2, l : 1, e : 1
+    아스키코드 'a' = 97
     */
-    printf("배열 길이 입력 : ");
-    int arr_length = 0; // 배열 길이 입력받을 변수
-    scanf("%d", &arr_length);
-    int arr[arr_length] = {};
-    // printf("%d", arr_length);
 
-    printf("몇 번 입력 : ");
-    int how_many = 0; // 몇번 입력받을지 정하는 변수
-    scanf("%d", &how_many);
-    // printf("%d", how_many);
+    // 문자열 입력 및 저장
+    printf("문자열 입력 : ");
+    char str[100] = "";
+    scanf("%s", str);
 
-    // 배열 안에 값 넣기
-    for (int i = 0; i < arr_length; i++)
+    // 대문자 소문자
+    for (int i = 0; str[i] != '\0'; i++)
     {
-        arr[i] = i + 1; // int arr[5] = {1,2,3,4,5};
+        if ('A' <= str[i] && str[i] <= 'Z') //'A' <= str[i] <= 'Z'
+        {
+            str[i] = str[i] + 32;
+        }
     }
 
-    int temp = 0;
-    int i = 0, j = 0;
+    int count[26] = {0}; // 글자가 몇개 있는지 저장하는 배열. 배열 안은 전부 0이 저장되어 있다.
 
-    for (int k = 0; k < how_many; k++) // 0,1,2,3번 반복
+    // 글자가 몇개 있는지 세는 반복문
+    for (int i = 0; str[i] != '\0'; i++) // 문자를 입력받은 배열. 0이 나오기 전까지 계속 반복된다.
     {
-        scanf("%d %d", &i, &j); // 1,2번 입력하면, arr[0] <-> arr[1]
+        char ch = str[i]; // str[0] = 'a'; str[1] = 'p';
 
-        temp = arr[i - 1];       // 1
-        arr[i - 1] = arr[j - 1]; // arr[0]안에
-        arr[j - 1] = temp;
+        count[ch - 'a']++; // p는 112. 112-97=15; -> count[15]++;
     }
 
-    for (int i = 0; i < arr_length; i++)
+    // 글자 : 숫자 -> 출력하는 반복문
+    for (int i = 0; i < 26; i++)
     {
-        printf("%d ", arr[i]);
+        // if문. 조건을 걸지 않으면 모든 알파벳이 다 출력된다.
+        if (count[i] > 0)
+        {
+            printf("%c : %d\n", 'a' + i, count[i]); //'a'라고 해도 컴퓨터는 97로 읽는다.
+        }
     }
 
     return 0;
