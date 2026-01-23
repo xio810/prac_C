@@ -1,48 +1,55 @@
 #include <stdio.h>
 #include <string.h> //strlen 사용시 필요
+#include <ctype.h>  //대문자<->소문자 변경 함수 사용시 필요
 
 int main()
 {
     /*
-    문자를 소문자로 입력받는다. 예시 'apple'
-    입력받은 문자 안에서 같은 단어가 몇개 있는지 센다.
-    a : 1, p : 2, l : 1, e : 1
-    아스키코드 'a' = 97
+    첫째 줄에, 42로 나누었을 때, 서로 다른 나머지가 몇 개 있는지 출력한다.
+    배열에 10개의 수를 입력받는다
+    입력받은 수를 42로 나눠서 나머지를 구한다
+
     */
+    printf("숫자 입력 : ");
+    int length = 5;
+    int arr[5] = {0};
 
-    // 문자열 입력 및 저장
-    printf("문자열 입력 : ");
-    char str[100] = "";
-    scanf("%s", str);
-
-    // 대문자 소문자
-    for (int i = 0; str[i] != '\0'; i++)
+    // 1. arr에 숫자 입력
+    for (int i = 0; i < length; i++)
     {
-        if ('A' <= str[i] && str[i] <= 'Z') //'A' <= str[i] <= 'Z'
+        scanf("%d", &arr[i]); // 42, 43, 44, 45, 420
+    }
+
+    // 2. 42로 나누기
+    int remainder[5] = {0};
+
+    for (int i = 0; i < length; i++)
+    {
+        remainder[i] = arr[i] % 42; // 0,1,2,3,0 -> 서로 다른 나머지 : 4개
+    }
+
+    // 3. 서로 다른 나머지 개수 찾기
+    int count = 0;
+
+    for (int i = 0; i < length; i++)
+    {
+        int duplicate = 0;
+        for (int j = 0; j < i; j++)
         {
-            str[i] = str[i] + 32;
+            if (remainder[j] == remainder[i])
+            {
+                duplicate = 1;
+                break;
+            }
+        }
+        if (duplicate == 0)
+        {
+            count++;
         }
     }
 
-    int count[26] = {0}; // 글자가 몇개 있는지 저장하는 배열. 배열 안은 전부 0이 저장되어 있다.
-
-    // 글자가 몇개 있는지 세는 반복문
-    for (int i = 0; str[i] != '\0'; i++) // 문자를 입력받은 배열. 0이 나오기 전까지 계속 반복된다.
-    {
-        char ch = str[i]; // str[0] = 'a'; str[1] = 'p';
-
-        count[ch - 'a']++; // p는 112. 112-97=15; -> count[15]++;
-    }
-
-    // 글자 : 숫자 -> 출력하는 반복문
-    for (int i = 0; i < 26; i++)
-    {
-        // if문. 조건을 걸지 않으면 모든 알파벳이 다 출력된다.
-        if (count[i] > 0)
-        {
-            printf("%c : %d\n", 'a' + i, count[i]); //'a'라고 해도 컴퓨터는 97로 읽는다.
-        }
-    }
+    // 4. 서로 다른 나머지 개수 출력
+    printf("서로 다른 개수 : %d\n", count);
 
     return 0;
 }
