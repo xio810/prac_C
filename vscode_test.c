@@ -4,52 +4,56 @@
 
 int main()
 {
-    /*
-    첫째 줄에, 42로 나누었을 때, 서로 다른 나머지가 몇 개 있는지 출력한다.
-    배열에 10개의 수를 입력받는다
-    입력받은 수를 42로 나눠서 나머지를 구한다
+    printf("숫자입력:");
+    int length = 0;
+    scanf("%d", &length);
 
-    */
-    printf("숫자 입력 : ");
-    int length = 5;
-    int arr[5] = {0};
-
-    // 1. arr에 숫자 입력
-    for (int i = 0; i < length; i++)
+    for (int i = 1; i <= length; i++) // 겉면. 세로 길이
     {
-        scanf("%d", &arr[i]); // 42, 43, 44, 45, 420
-    }
-
-    // 2. 42로 나누기
-    int remainder[5] = {0};
-
-    for (int i = 0; i < length; i++)
-    {
-        remainder[i] = arr[i] % 42; // 0,1,2,3,0 -> 서로 다른 나머지 : 4개
-    }
-
-    // 3. 서로 다른 나머지 개수 찾기
-    int count = 0;
-
-    for (int i = 0; i < length; i++)
-    {
-        int duplicate = 0;
-        for (int j = 0; j < i; j++)
+        for (int k = length; k > i; k--) // 빈칸.
         {
-            if (remainder[j] == remainder[i])
+            printf(" ");
+        }
+
+        for (int j = 0; j < (2 * i) - 1; j++) // 첫째줄 별 1. 둘째줄 별 3. 셋째줄 별 5.
+        {
+
+            // 여기서 그냥 별을 찍는 게 아니라...
+            if (j == 0 || j == (2 * i) - 2) // i=4이면, 8-2=6
             {
-                duplicate = 1;
-                break;
+                printf("*"); // 줄의 시작이거나 끝일 때만 별!
+            }
+            else
+            {
+                printf(" "); // 그 외에는 빈칸!
             }
         }
-        if (duplicate == 0)
-        {
-            count++;
-        }
+
+        printf("\n");
     }
 
-    // 4. 서로 다른 나머지 개수 출력
-    printf("서로 다른 개수 : %d\n", count);
+    for (int i = 1; i < length; i++) // 아래 세모. 총 길이
+    {
+        for (int k = 0; k < i; k++)
+        {
+            printf(" ");
+        }
+
+        for (int j = 0; j < (2 * length) - (2 * i) - 1; j++) // 첫째줄 별 7. 둘째줄 별 5. 셋째줄 별 3
+        {
+            // 여기서 그냥 별을 찍는 게 아니라...
+            if (j == 0 || j == (2 * length) - (2 * i) - 2)
+            {
+                printf("*"); // 줄의 시작이거나 끝일 때만 별!
+            }
+            else
+            {
+                printf(" "); // 그 외에는 빈칸!
+            }
+        }
+
+        printf("\n");
+    }
 
     return 0;
 }
