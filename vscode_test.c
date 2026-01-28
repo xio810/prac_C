@@ -4,55 +4,54 @@
 
 int main()
 {
-    printf("숫자입력:");
+    /*
+     문자입력받은 뒤, 글자 개수 출력
+    apple
+    a:1
+    p:2
+    l:1
+    e:1
+ */
+    // 1. 문자 입력
+    printf("문자입력:");
+    char str[50] = "";
+    scanf("%s", str);
+
+    // 입력받은 문자 길이 체크
     int length = 0;
-    scanf("%d", &length);
+    length = strlen(str);
 
-    for (int i = 1; i <= length; i++) // 겉면. 세로 길이
+    // 대문자-소문자 변경
+    for (int i = 0; str[i] != '\0'; i++)
     {
-        for (int k = length; k > i; k--) // 빈칸.
-        {
-            printf(" ");
-        }
+        str[i] = tolower(str[i]);
+    }
+    // 글자 개수 담을 정수형 배열 생성
+    int count[26] = {0};
 
-        for (int j = 0; j < (2 * i) - 1; j++) // 첫째줄 별 1. 둘째줄 별 3. 셋째줄 별 5.
-        {
-
-            // 여기서 그냥 별을 찍는 게 아니라...
-            if (j == 0 || j == (2 * i) - 2) // i=4이면, 8-2=6
-            {
-                printf("*"); // 줄의 시작이거나 끝일 때만 별!
-            }
-            else
-            {
-                printf(" "); // 그 외에는 빈칸!
-            }
-        }
-
-        printf("\n");
+    // 글자 개수 배열에 넣기
+    for (int i = 0; str[i] != '\0'; i++) // str배열에 \0가 나올때까지 반복
+    {
+        char ch = str[i];  // str[0] = 'a';임. ch='a'가 들어감
+        count[ch - 'a']++; // 예시로, p가 입력됐을 때, 112. 112-97 = 15임. count[15]++;임
+        // count[0]=1; count[15]=2; count[11] = 1;
     }
 
-    for (int i = 1; i < length; i++) // 아래 세모. 총 길이
+    // 글자 순서대로 출력되게
+
+    // 글자가 출력되었는지 저장하는 변수
+    int printed[26] = {0}; // 0:출력안됨 , 1:출력됨
+
+    for (int i = 0; str[i] != '\0'; i++) // str배열에 \0 나오기 전까지 반복. apple이면 0~4
     {
-        for (int k = 0; k < i; k++)
-        {
-            printf(" ");
-        }
+        char ch = str[i];     // ch = str[0] => ch = 'a'; //ch = str[1] => ch = 'p'
+        int index = ch - 'a'; // index = 0, index = 15;
 
-        for (int j = 0; j < (2 * length) - (2 * i) - 1; j++) // 첫째줄 별 7. 둘째줄 별 5. 셋째줄 별 3
+        if (printed[index] == 0) // printed[0] = 0
         {
-            // 여기서 그냥 별을 찍는 게 아니라...
-            if (j == 0 || j == (2 * length) - (2 * i) - 2)
-            {
-                printf("*"); // 줄의 시작이거나 끝일 때만 별!
-            }
-            else
-            {
-                printf(" "); // 그 외에는 빈칸!
-            }
+            printf("%c : %d\n", ch, count[index]);
+            printed[index] = 1; // printed[0] = 1으로 바뀜
         }
-
-        printf("\n");
     }
 
     return 0;
