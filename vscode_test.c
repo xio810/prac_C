@@ -54,5 +54,22 @@ int main()
         }
     }
 
+    // 가장 많이 나온 단어 찾기
+    // count[15]=2;
+    int max = count[0]; // count[0]=1, count[15]=2,
+    char max_char = 'a';
+
+    for (int i = 0; i < 26; i++)
+    {
+        if (max < count[i]) // 0 < 2
+        {
+            max = count[i];     // i=15
+            max_char = i + 'a'; // 15+97
+        }
+    }
+
+    printf("가장 큰 숫자 : %d\n", max);
+    printf("가장 많이 나온 단어 : %c\n", max_char);
+
     return 0;
 }
