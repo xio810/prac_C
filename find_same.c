@@ -13,14 +13,14 @@ int main()
                 {
                         if (arr[i] == arr[j])
                         {
-                                same[i] = arr[i];
+                                same[i] = arr[i]; // 2,4,2
                         }
                 }
         }
 
         printf("중복된 원소: ");
 
-        /* for (int i = 0; i < length; i++)
+        for (int i = 0; i < length; i++)
         {
                 if (same[i] != 0) // same배열에 0이 아닌 수만 들어갈 수 있음
                 // same={0,2,0,4,2,0,0,0} -> 1, 3, 4
@@ -40,35 +40,35 @@ int main()
                                 printf("%d ", same[i]);
                         }
                 }
-        } */
+        }
 
         // for (int i = 0; i < length; i++)
         // {
         //         printf("%d : %d\n", i, same[i]);
         // }
 
-        int check[8] = {0}; // 각 자릿수(index)가 중복인지 아닌지 기록하는 전용 장부
+        /* int check[8] = {0}; // 각 자릿수(index)가 중복인지 아닌지 기록하는 전용 장부
 
         for (int i = 0; i < length; i++)
         {
-                if (same[i] != 0)
+                if (same[i] != 0) // 관문을 통과하는 건 1번(2), 3번(4), 4번(2) 자릿수뿐
                 {
                         // 1. 과거를 뒤져서 중복이면 check[i]를 1로 만듦
                         for (int k = 0; k < i; k++)
                         {
-                                if (same[k] == same[i])
+                                if (same[k] == same[i]) // k=1,i=4
                                 {
-                                        check[i] = 1; // "i번 자리에 있는 놈은 이미 앞에서 나왔던 놈임!"
+                                        check[i] = 1; // "i번 자리에 있는 놈은 이미 앞에서 나왔던 놈임!" -> check[4]=1
                                         break;
                                 }
                         }
 
                         // 2. 체크 장부를 보고 0(새로운 놈)인 경우에만 실제 숫자(same[i])를 출력
-                        if (check[i] == 0)
+                        if (check[i] == 0) // check[0,1,2,3,5,6,7]이 0임
                         {
-                                printf("%d ", same[i]); // check[i]를 찍으면 0만 나오니까 same[i]를 찍어야 해요!
+                                printf("%d ", same[i]); // 관문을 통과한 same[1,3,4]
                         }
                 }
-        }
+        } */
         return 0;
 }
