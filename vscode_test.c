@@ -4,72 +4,36 @@
 
 int main()
 {
+    // 플래그 변수 연습
     /*
-     문자입력받은 뒤, 글자 개수 출력
-    apple
-    a:1
-    p:2
-    l:1
-    e:1
- */
-    // 1. 문자 입력
-    printf("문자입력:");
-    char str[50] = "";
+    사용자가 문자열을 입력합니다. (예: apple7, password, 12345)
+
+    이 문자열에 '숫자'가 하나라도 포함되어 있는지 확인하세요.
+
+    숫자가 있으면 "보안 등급 높음", 없으면 **"숫자를 포함해주세요"**라고 출력하세요.
+    */
+    printf("문자를 입력 : ");
+    char str[10] = "";
     scanf("%s", str);
+    int hasDigit = 0; // 숫자유무 확인하는 플래그변수
 
-    // 입력받은 문자 길이 체크
-    int length = 0;
-    length = strlen(str);
-
-    // 대문자-소문자 변경
-    for (int i = 0; str[i] != '\0'; i++)
+    for (int i = 0; str[i] != '\0'; i++) // str문자가 null이 아닐때까지 반복
     {
-        str[i] = tolower(str[i]);
-    }
-    // 글자 개수 담을 정수형 배열 생성
-    int count[26] = {0};
-
-    // 글자 개수 배열에 넣기
-    for (int i = 0; str[i] != '\0'; i++) // str배열에 \0가 나올때까지 반복
-    {
-        char ch = str[i];  // str[0] = 'a';임. ch='a'가 들어감
-        count[ch - 'a']++; // 예시로, p가 입력됐을 때, 112. 112-97 = 15임. count[15]++;임
-        // count[0]=1; count[15]=2; count[11] = 1;
-    }
-
-    // 글자 순서대로 출력되게
-
-    // 글자가 출력되었는지 저장하는 변수
-    int printed[26] = {0}; // 0:출력안됨 , 1:출력됨
-
-    for (int i = 0; str[i] != '\0'; i++) // str배열에 \0 나오기 전까지 반복. apple이면 0~4
-    {
-        char ch = str[i];     // ch = str[0] => ch = 'a'; //ch = str[1] => ch = 'p'
-        int index = ch - 'a'; // index = 0, index = 15;
-
-        if (printed[index] == 0) // printed[0] = 0
+        if ('0' <= str[i] && str[i] <= '9')
         {
-            printf("%c : %d\n", ch, count[index]);
-            printed[index] = 1; // printed[0] = 1으로 바뀜
+            hasDigit = 1; // 숫자가 나오면 플래그변수 1로
+            break;
         }
     }
 
-    // 가장 많이 나온 단어 찾기
-    // count[15]=2;
-    int max = count[0]; // count[0]=1, count[15]=2,
-    char max_char = 'a';
-
-    for (int i = 0; i < 26; i++)
+    if (hasDigit == 1)
     {
-        if (max < count[i]) // 0 < 2
-        {
-            max = count[i];     // i=15
-            max_char = i + 'a'; // 15+97
-        }
+        printf("보안 등급 높음\n");
     }
-
-    printf("가장 큰 숫자 : %d\n", max);
-    printf("가장 많이 나온 단어 : %c\n", max_char);
+    else
+    {
+        printf("숫자를 포함해주세요\n");
+    }
 
     return 0;
 }
