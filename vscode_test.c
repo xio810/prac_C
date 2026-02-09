@@ -7,37 +7,44 @@ int main()
     /*플래그배열 연습*/
 
     // 배열에 '5'가 있는지
-    printf("숫자 입력\n");
+    // or 1이 아닌 수들
 
+    printf("숫자입력:\n");
     int arr[5] = {0};
     int length = 5;
-    int flag[10] = {0}; // 플래그 배열 선언
+    // 플래그배열
+    int flag[15] = {0};
 
+    // 정수 배열에 숫자 입력
     for (int i = 0; i < length; i++)
     {
-        scanf("%d", &arr[i]); // arr배열에 숫자 입력받기
+        scanf("%d", &arr[i]); // arr[0]=0, arr[1]=1 ... arr[5]= 5;
     }
 
-    // 찾기
+    // 1,1,3,3,5 입력됐을 시, 1,3이 중복이라고 체크
     for (int i = 0; i < length; i++)
     {
-
-        /* if (arr[i] == 5) // 예시로 arr[3] = 5
-        {
-            flag[i] = 1;
-            break;
-        } */
         int num = arr[i];
-        flag[num] = 1;
+        flag[num]++;
     }
 
-    if (flag[5] == 1)
+    // 출력
+    /* if (flag[5] == 1)
     {
-        printf("있음\n");
+        printf("=O=\n");
     }
     else
     {
-        printf("없음\n");
+        printf("=X=\n");
+    } */
+
+    printf("중복된 숫자 : ");
+    for (int i = 0; i < 15; i++)
+    {
+        if (flag[i] > 1)
+        {
+            printf("%d ", i);
+        }
     }
 
     return 0;
