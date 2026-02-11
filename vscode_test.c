@@ -28,7 +28,7 @@ int main()
         flag[num]++;
     }
 
-    // 출력
+    // 입력한 수 중 5가 있으면 출력
     /* if (flag[5] == 1)
     {
         printf("=O=\n");
@@ -38,14 +38,37 @@ int main()
         printf("=X=\n");
     } */
 
-    printf("중복된 숫자 : ");
+    /* printf("중복된 숫자 : ");
     for (int i = 0; i < 15; i++)
     {
         if (flag[i] > 1)
         {
             printf("%d ", i);
         }
+    } */
+
+    // 한번이라도 나온 숫자만 출력하기
+    /* printf("입력된 숫자의 종류 : ");
+    for (int i = 0; i < 15; i++)
+    {
+        if (flag[i] > 0)
+        {
+            printf("%d ", i);
+        }
+    } */
+
+    // 가장 많이 입력된 숫자 찾기 (flag에 값이 가장 높은 수)
+    int max = 0; // flag[0]=0; flag[1]=1; flag[2]=2; flag[3]=1; flag[5]=1;
+    int normal = 0;
+    for (int i = 0; i < 15; i++)
+    {
+        if (max < flag[i])
+        {
+            max = flag[i];
+            normal = i;
+        }
     }
+    printf("가장 많이 입력된 숫자 : %d\n", normal);
 
     return 0;
 }
