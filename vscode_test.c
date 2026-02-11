@@ -59,16 +59,31 @@ int main()
 
     // 가장 많이 입력된 숫자 찾기 (flag에 값이 가장 높은 수)
     int max = 0; // flag[0]=0; flag[1]=1; flag[2]=2; flag[3]=1; flag[5]=1;
-    int normal = 0;
+    int max_mode = 0;
+
     for (int i = 0; i < 15; i++)
     {
         if (max < flag[i])
         {
             max = flag[i];
-            normal = i;
+            max_mode = i;
         }
     }
-    printf("가장 많이 입력된 숫자 : %d\n", normal);
+    printf("가장 많이 입력된 숫자 : %d\n", max_mode);
+
+    // 가장 적게 입력된 숫자
+    int min = max;
+    int min_mode = 0;
+
+    for (int i = 0; i < 15; i++)
+    {
+        if (min > flag[i] && flag[i] != 0)
+        {
+            min = flag[i];
+            min_mode = i;
+        }
+    }
+    printf("가장 적게 입력된 숫자 : %d\n", min_mode);
 
     return 0;
 }
