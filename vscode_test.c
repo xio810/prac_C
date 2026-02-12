@@ -4,86 +4,40 @@
 
 int main()
 {
-    /*플래그배열 연습*/
+    /* 첫째 줄에 입력으로 주어진 N개의 정수 중에 v가 몇 개인지 출력한다.*/
 
-    // 배열에 '5'가 있는지
-    // or 1이 아닌 수들
+    printf("배열 길이 입력:");
 
-    printf("숫자입력:\n");
-    int arr[5] = {0};
-    int length = 5;
-    // 플래그배열
-    int flag[15] = {0};
+    int length = 0;
+    scanf("%d", &length); // 11로 지정
 
-    // 정수 배열에 숫자 입력
+    // 배열 길이를 scanf로 지정불가하므로, 큰 수로 지정
+    int arr[100] = {0};
+
+    // 배열 안에 숫자 넣기
     for (int i = 0; i < length; i++)
     {
-        scanf("%d", &arr[i]); // arr[0]=0, arr[1]=1 ... arr[5]= 5;
+        scanf("%d", &arr[i]);
     }
 
-    // 1,1,3,3,5 입력됐을 시, 1,3이 중복이라고 체크
+    // 찾을 정수 입력받기
+    printf("찾을 정수 입력 :");
+
+    int find = 0;
+    scanf("%d", &find);
+
+    // 찾을 정수 몇개인지
+    int flag = 0;
+
     for (int i = 0; i < length; i++)
     {
-        int num = arr[i];
-        flag[num]++;
-    }
-
-    // 입력한 수 중 5가 있으면 출력
-    /* if (flag[5] == 1)
-    {
-        printf("=O=\n");
-    }
-    else
-    {
-        printf("=X=\n");
-    } */
-
-    /* printf("중복된 숫자 : ");
-    for (int i = 0; i < 15; i++)
-    {
-        if (flag[i] > 1)
+        if (arr[i] == find)
         {
-            printf("%d ", i);
-        }
-    } */
-
-    // 한번이라도 나온 숫자만 출력하기
-    /* printf("입력된 숫자의 종류 : ");
-    for (int i = 0; i < 15; i++)
-    {
-        if (flag[i] > 0)
-        {
-            printf("%d ", i);
-        }
-    } */
-
-    // 가장 많이 입력된 숫자 찾기 (flag에 값이 가장 높은 수)
-    int max = 0; // flag[0]=0; flag[1]=1; flag[2]=2; flag[3]=1; flag[5]=1;
-    int max_mode = 0;
-
-    for (int i = 0; i < 15; i++)
-    {
-        if (max < flag[i])
-        {
-            max = flag[i];
-            max_mode = i;
+            flag++;
         }
     }
-    printf("가장 많이 입력된 숫자 : %d\n", max_mode);
 
-    // 가장 적게 입력된 숫자
-    int min = max;
-    int min_mode = 0;
-
-    for (int i = 0; i < 15; i++)
-    {
-        if (min > flag[i] && flag[i] != 0)
-        {
-            min = flag[i];
-            min_mode = i;
-        }
-    }
-    printf("가장 적게 입력된 숫자 : %d\n", min_mode);
-
+    // 찾는 정수의 개수 출력
+    printf("정수 개수 : %d\n", flag);
     return 0;
 }
