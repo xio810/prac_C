@@ -4,40 +4,43 @@
 
 int main()
 {
-    /* 첫째 줄에 입력으로 주어진 N개의 정수 중에 v가 몇 개인지 출력한다.*/
+    /*
+    공바꾸기 문제
+    첫째 줄 : 5 4 -> 바구니개수, 교환횟수
+     */
 
-    printf("배열 길이 입력:");
+    printf("바구니개수 & 교환횟수 입력");
+    int basket = 0, change_count = 0; // 바구니개수, 교환횟수
+    scanf("%d %d", &basket, &change_count);
 
-    int length = 0;
-    scanf("%d", &length); // 11로 지정
-
-    // 배열 길이를 scanf로 지정불가하므로, 큰 수로 지정
+    // 배열 선언
     int arr[100] = {0};
 
-    // 배열 안에 숫자 넣기
-    for (int i = 0; i < length; i++)
+    // 바구니에 숫자 넣기
+    for (int i = 0; i < basket; i++)
     {
-        scanf("%d", &arr[i]);
+        arr[i] = i + 1; // arr[0]=1, arr[1]=2 ...
     }
 
-    // 찾을 정수 입력받기
-    printf("찾을 정수 입력 :");
+    // 교환 a,b입력받기
+    printf("교환 번호 입력 : \n");
 
-    int find = 0;
-    scanf("%d", &find);
-
-    // 찾을 정수 몇개인지
-    int flag = 0;
-
-    for (int i = 0; i < length; i++)
+    int a = 0, b = 0;
+    int temp = 0;
+    for (int i = 0; i < change_count; i++)
     {
-        if (arr[i] == find)
-        {
-            flag++;
-        }
+        scanf("%d %d", &a, &b); // 1번과 2번 공 바꾸기 -> arr[0]과arr[1]
+
+        temp = arr[a - 1];
+        arr[a - 1] = arr[b - 1];
+        arr[b - 1] = temp;
     }
 
-    // 찾는 정수의 개수 출력
-    printf("정수 개수 : %d\n", flag);
+    // 출력
+    for (int i = 0; i < basket; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+
     return 0;
 }
