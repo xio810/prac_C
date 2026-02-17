@@ -5,35 +5,53 @@
 int main()
 {
     /*
-
+백준1546번
      */
+    printf("과목 개수 입력 : ");
+    int subject = 0;
+    scanf("%d", &subject);
 
-    printf("정수 입력 : \n");
-
-    int length = 10;
-
-    // 정수입력 & 42로 나누기
-    int division[42] = {0};
-    int num = 0;
-
-    for (int i = 0; i < length; i++)
+    printf("과목 점수 입력 : \n");
+    int score[1000] = {0};
+    for (int i = 0; i < subject; i++)
     {
-        scanf("%d", &num);
-        division[num % 42] = 1;
+        scanf("%d", &score[i]);
     }
 
-    // 개수 세기
-    int count = 0;
-    for (int i = 0; i < 42; i++)
+    // 입력된 성적 중 최대값 찾기
+    int max = 0;
+
+    for (int i = 0; i < subject; i++)
     {
-        if (division[i] == 1)
+        if (max < score[i])
         {
-            count++;
+            max = score[i];
         }
     }
 
+    // 점수 값 고치기
+    double arr[1000] = {0}; // 점수 값 고친거 담는 배열
+
+    for (int i = 0; i < subject; i++)
+    {
+        int num = score[i];
+        arr[i] = (double)num / max * 100;
+    }
+
+    // 새로운 평균 구하기
+    double sum = 0; // 합계
+
+    // 점수 총점 찾기
+    for (int i = 0; i < subject; i++)
+    {
+        sum += arr[i];
+    }
+    // 평균 구하기
+    double avg = sum / subject;
+
     // 출력
-    printf("나머지 : %d ", count);
+
+    printf("%.1f\n", avg);
 
     return 0;
 }
