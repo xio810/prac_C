@@ -5,53 +5,31 @@
 int main()
 {
     /*
-백준1546번
+Sprout입력시 문자열길이 출력
      */
-    printf("과목 개수 입력 : ");
-    int subject = 0;
-    scanf("%d", &subject);
 
-    printf("과목 점수 입력 : \n");
-    int score[1000] = {0};
-    for (int i = 0; i < subject; i++)
+    printf("테스트 케이스 개수 입력 : ");
+    int test_case = 0;
+    scanf("%d", &test_case);
+
+    printf("글자입력:\n");
+    char str[1000] = "";
+
+    for (int i = 0; i < test_case; i++)
     {
-        scanf("%d", &score[i]);
-    }
+        scanf("%s", str);
 
-    // 입력된 성적 중 최대값 찾기
-    int max = 0;
-
-    for (int i = 0; i < subject; i++)
-    {
-        if (max < score[i])
+        int length = 0; // 초기화 필요
+                        /*   while (str[length] != '\0')
+                          {
+                
+                              length++;
+                          } */
+        for (int j = 0; str[j] != '\0'; j++)
         {
-            max = score[i];
+            length++;
         }
+        printf("%c%c\n", str[0], str[length - 1]);
     }
-
-    // 점수 값 고치기
-    double arr[1000] = {0}; // 점수 값 고친거 담는 배열
-
-    for (int i = 0; i < subject; i++)
-    {
-        int num = score[i];
-        arr[i] = (double)num / max * 100;
-    }
-
-    // 새로운 평균 구하기
-    double sum = 0; // 합계
-
-    // 점수 총점 찾기
-    for (int i = 0; i < subject; i++)
-    {
-        sum += arr[i];
-    }
-    // 평균 구하기
-    double avg = sum / subject;
-
-    // 출력
-
-    printf("%.1f\n", avg);
-
     return 0;
 }
