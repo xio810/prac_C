@@ -5,31 +5,28 @@
 int main()
 {
     /*
-Sprout입력시 문자열길이 출력
+    아스키코드
      */
 
-    printf("테스트 케이스 개수 입력 : ");
-    int test_case = 0;
-    scanf("%d", &test_case);
+    printf("글자 개수 입력 : ");
+    int num = 0;
+    scanf("%d", &num);
 
-    printf("글자입력:\n");
-    char str[1000] = "";
+    // 글자
+    printf("숫자 입력 : \n");
+    char str[100] = "";
+    scanf("%s", str);
 
-    for (int i = 0; i < test_case; i++)
+    // 더하기
+    int sum = 0;
+
+    for (int i = 0; i < num; i++)
     {
-        scanf("%s", str);
-
-        int length = 0; // 초기화 필요
-                        /*   while (str[length] != '\0')
-                          {
-                
-                              length++;
-                          } */
-        for (int j = 0; str[j] != '\0'; j++)
-        {
-            length++;
-        }
-        printf("%c%c\n", str[0], str[length - 1]);
+        sum += str[i] - '0';
     }
+
+    // 출력
+    printf("%d\n", sum);
+
     return 0;
 }
