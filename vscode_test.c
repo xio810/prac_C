@@ -5,28 +5,36 @@
 int main()
 {
     /*
-    아스키코드
+    10809
      */
 
-    printf("글자 개수 입력 : ");
-    int num = 0;
-    scanf("%d", &num);
-
-    // 글자
-    printf("숫자 입력 : \n");
+    printf("글자 입력 : ");
     char str[100] = "";
     scanf("%s", str);
 
-    // 더하기
-    int sum = 0;
-
-    for (int i = 0; i < num; i++)
+    // 플래그 배열에 전부 -1값 넣기 (입력된 글자에 사용된 알파벳 없다고 표시용)
+    int alphabet[26];
+    for (int i = 0; i < 26; i++)
     {
-        sum += str[i] - '0';
+        alphabet[i] = -1;
+    }
+
+    // 문자열 순회 (입력된 문자 : apple)
+    for (int i = 0; str[i] != '\0'; i++)
+    {
+        int index = str[i] - 'a'; // 97-97=0 p는 112-97=15
+
+        if (alphabet[index] == -1) // alp[0] == -1 이라면 (아직 안나온 글자라면)
+        {
+            alphabet[index] = i; // alp[0]에 0이라고 기록, alp[15]=1
+        }
     }
 
     // 출력
-    printf("%d\n", sum);
+    for (int i = 0; i < 26; i++)
+    {
+        printf("%d ", alphabet[i]);
+    }
 
     return 0;
 }
