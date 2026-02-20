@@ -3,7 +3,7 @@
 
 int main()
 {
-	printf("배열 안에서 두번째로 큰 수 출력하기\n");
+	/* printf("배열 안에서 두번째로 큰 수 출력하기\n");
 
 	int arr[5] = {10, 0, 0, 0, 0};
 	int length = 5;
@@ -39,6 +39,79 @@ int main()
 	{
 
 		printf("두 번째로 큰 수: %d\n", max2);
+	}
+ */
+
+	/* printf("숫자 반대로 출력 : ");
+
+	int arr[5] = {1, 2, 3, 4, 5};
+	int length = 5;
+	int temp = 0;
+
+	for (int i = 0; i < length / 2; i++)
+	{
+		temp = arr[i];
+		arr[i] = arr[length - i - 1];
+		arr[length - i - 1] = temp;
+	}
+
+	for (int i = 0; i < length; i++)
+	{
+		printf("%d ", arr[i]);
+	} */
+
+	/* printf("문자열연습\n");
+	// 문자열 입력 %s
+	char str[100];
+	scanf("%s", str); */
+
+	/* // 알파벳 배열 안에 -1넣기
+	int apbt[26];
+	for (int i = 0; i < 26; i++)
+	{
+		apbt[i] = -1;
+	}
+
+	for (int i = 0; i < 26; i++)
+	{
+		int index = str[i] - 'a';
+		// str[0]=a, [1]=p, [2]=p, [3]=l, [4]=e
+
+		if (apbt[index] == -1)
+		{
+			apbt[index] = i;
+		}
+	}
+
+	for (int i = 0; i < 26; i++)
+	{
+
+		printf("%d : %d / ", i, apbt[i]);
+	} */
+
+	printf("출석 번호 부를 총 숫자");
+	int total_number = 0;
+	scanf("%d", &total_number);
+
+	printf("출석 번호 입력\n");
+	int arr[100] = {0};
+	for (int i = 1; i <= total_number; i++)
+	{
+		scanf("%d", &arr[i]); // 1,2,2 (1번1번,2번2번)
+	}
+
+	// 학생번호 순서대로 몇번 불렸는지
+	int student_number[23] = {0};
+
+	for (int i = 1; i <= total_number; i++)
+	{
+		int num = arr[i];
+		student_number[num]++;
+	}
+
+	for (int i = 1; i <= 23; i++)
+	{
+		printf("%d ", student_number[i]);
 	}
 
 	return 0;
