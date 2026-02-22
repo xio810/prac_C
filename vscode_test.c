@@ -5,36 +5,33 @@
 int main()
 {
     /*
-    10809
+    2675번
+몇번 반복할지 숫자 : 3
+abc 입력되면 : aaabbbccc
      */
 
-    printf("글자 입력 : ");
-    char str[100] = "";
-    scanf("%s", str);
+    printf("글자 입력 횟수 : ");
+    int total_num = 0;
+    scanf("%d", &total_num); // 여기에 2입력되면 2번만 입력받음
 
-    // 플래그 배열에 전부 -1값 넣기 (입력된 글자에 사용된 알파벳 없다고 표시용)
-    int alphabet[26];
-    for (int i = 0; i < 26; i++)
+    int string_num = 0; // 글자 몇번 반복하는지 받는 변수
+    char str[20] = "";  // 문자 입력받는 문자형 배열
+
+    for (int i = 0; i < total_num; i++) // 2번 반복
     {
-        alphabet[i] = -1;
-    }
+        scanf("%d %s", &string_num, str);
+        // printf("%c %c\n", str[0], str[0]); // 2번 넣으면 str[0]str[0]이렇게 두번 반복됨
 
-    // 문자열 순회 (입력된 문자 : apple)
-    for (int i = 0; str[i] != '\0'; i++)
-    {
-        int index = str[i] - 'a'; // 97-97=0 p는 112-97=15
-
-        if (alphabet[index] == -1) // alp[0] == -1 이라면 (아직 안나온 글자라면)
+        // 문자열 반복
+        for (int j = 0; str[j] != '\0'; j++)
         {
-            alphabet[index] = i; // alp[0]에 0이라고 기록, alp[15]=1
+            // 몇번 반복 출력되는지
+            for (int k = 0; k < string_num; k++)
+            {
+                printf("%c", str[j]);
+            }
         }
+        printf("\n");
     }
-
-    // 출력
-    for (int i = 0; i < 26; i++)
-    {
-        printf("%d ", alphabet[i]);
-    }
-
     return 0;
 }
