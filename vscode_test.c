@@ -5,36 +5,44 @@
 int main()
 {
     /*
-   1152번
-   나온 문장에서 단어의 수 몇개인지
+    2908번
+    // 734 893를 입력하면 -> 437 398로 바꾼다 (뒤로읽기) -> 바꾼 숫자 중 큰 수 출력
      */
 
-    printf("글자 입력 : ");
-    char str[1000001] = ""; // 문자 받을 배열
-    scanf(" %[^\n]", str);  // 일반적인 %s로 하면, 띄어쓰기하면 그 뒤는 저장안됨
+    printf("숫자 입력 : ");
+    int length = 3;             // 문자열 길이
+    char str1[4], str2[4] = ""; // 입력된 숫자(문자열)2개 담는 배열 2개
+    scanf("%s %s", str1, str2); // 두 숫자 문자열로 입력
 
-    // 배열 안의 단어 몇개인지 찾기
-    // hello world하면 2가 나와야함
-    int count = 0;
-    int in_word = 0;
-
-    for (int i = 0; str[i] != '\0'; i++)
+    // 거꾸로 만들기
+    int temp = 0;
+    for (int i = 0; i < length / 2; i++)
     {
-        if (str[i] != ' ')
-        {
-            if (in_word == 0)
-            {
-                count++;
-                in_word = 1;
-            }
-        }
-        else
-        {
-            in_word = 0;
-        }
+        temp = str1[length - i - 1];
+        str1[length - i - 1] = str1[i];
+        str1[i] = temp;
+
+        temp = str2[length - i - 1];
+        str2[length - i - 1] = str2[i];
+        str2[i] = temp;
     }
 
-    printf("단어 수 : %d\n", count);
+    int num1, num2 = 0; // 문자로 변환된 숫자 저장할 변수
+    // sscanf(str1, "%d", &num1); -> 문자열을 숫자로 변환하는 함수
+
+    // 숫자로 변환
+    num1 = ((str1[0] - '0') * 100) + ((str1[1] - '0') * 10) + (str1[2] - '0');
+    num2 = ((str2[0] - '0') * 100) + ((str2[1] - '0') * 10) + (str2[2] - '0');
+
+    // 크기 비교
+    if (num1 > num2)
+    {
+        printf("%d\n", num1);
+    }
+    else
+    {
+        printf("%d\n", num2);
+    }
 
     return 0;
 }
