@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h> //strlen사용시 필요
 
 int main()
 {
@@ -89,29 +90,16 @@ int main()
 		printf("%d : %d / ", i, apbt[i]);
 	} */
 
-	printf("출석 번호 부를 총 숫자");
-	int total_number = 0;
-	scanf("%d", &total_number);
+	// 백준 11718
+	// 그대로 출력하기
 
-	printf("출석 번호 입력\n");
-	int arr[100] = {0};
-	for (int i = 1; i <= total_number; i++)
+	printf("단어입력:");
+
+	char str[101];
+
+	while (scanf(" %[^\n]", str) != EOF) // EOF까지 반복!
 	{
-		scanf("%d", &arr[i]); // 1,2,2 (1번1번,2번2번)
-	}
-
-	// 학생번호 순서대로 몇번 불렸는지
-	int student_number[23] = {0};
-
-	for (int i = 1; i <= total_number; i++)
-	{
-		int num = arr[i];
-		student_number[num]++;
-	}
-
-	for (int i = 1; i <= 23; i++)
-	{
-		printf("%d ", student_number[i]);
+		printf("%s\n", str);
 	}
 
 	return 0;
