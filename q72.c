@@ -90,17 +90,61 @@ int main()
 		printf("%d : %d / ", i, apbt[i]);
 	} */
 
-	// 백준 11718
-	// 그대로 출력하기
+	// 백준 5622
 
-	printf("단어입력:");
+	printf("알파벳 입력 : ");
+	char str[16] = ""; // WA입력
+	scanf("%s", str);
+	int length = strlen(str);
 
-	char str[101];
-
-	while (scanf(" %[^\n]", str) != EOF) // EOF까지 반복!
+	// 소문자를 대문자로 변경
+	for (int i = 0; i < length; i++)
 	{
-		printf("%s\n", str);
+		if ('a' <= str[i] && str[i] <= 'z')
+		{
+			str[i] = str[i] - 32;
+		}
 	}
+
+	// 조건
+	int total = 0;
+	for (int i = 0; i < length; i++)
+	{
+		if (str[i] == 'A' || str[i] == 'B' || str[i] == 'C')
+		{
+			total = total + 3;
+		}
+		if (str[i] == 'D' || str[i] == 'E' || str[i] == 'F')
+		{
+			total = total + 4;
+		}
+		if (str[i] == 'G' || str[i] == 'H' || str[i] == 'I')
+		{
+			total = total + 5;
+		}
+		if (str[i] == 'J' || str[i] == 'K' || str[i] == 'L')
+		{
+			total = total + 6;
+		}
+		if (str[i] == 'M' || str[i] == 'N' || str[i] == 'O')
+		{
+			total = total + 7;
+		}
+		if (str[i] == 'P' || str[i] == 'Q' || str[i] == 'R' || str[i] == 'S')
+		{
+			total = total + 8;
+		}
+		if (str[i] == 'T' || str[i] == 'U' || str[i] == 'V')
+		{
+			total = total + 9;
+		}
+		if (str[i] == 'W' || str[i] == 'X' || str[i] == 'Y' || str[i] == 'Z')
+		{
+			total = total + 10;
+		}
+	}
+
+	printf("걸린시간 : %d\n", total);
 
 	return 0;
 }
