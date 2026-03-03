@@ -1,47 +1,69 @@
 #include <stdio.h>
-// #include <string.h> //strlen 사용시 필요
-// #include <ctype.h>  //대문자<->소문자 변경 함수 사용시 필요
+#include <string.h> //strlen 사용시 필요
+#include <ctype.h>  //대문자<->소문자 변경 함수 사용시 필요  char upper = toupper(소문자변수);
 
 int main()
 {
+    // 백준 2738
+
+    printf("배열 크기 입력 : \n");
+    int arr[100][100];
+    int arr2[100][100];
+    int a = 0, b = 0;
+    scanf("%d %d", &a, &b);
+
+    // 첫번째 배열
     /*
-    2908번
-    // 734 893를 입력하면 -> 437 398로 바꾼다 (뒤로읽기) -> 바꾼 숫자 중 큰 수 출력
-     */
-
-    printf("숫자 입력 : ");
-    int length = 3;             // 문자열 길이
-    char str1[4], str2[4] = ""; // 입력된 숫자(문자열)2개 담는 배열 2개
-    scanf("%s %s", str1, str2); // 두 숫자 문자열로 입력
-
-    // 거꾸로 만들기
-    int temp = 0;
-    for (int i = 0; i < length / 2; i++)
+    1 1 1
+    2 2 2
+    0 1 0
+    */
+    printf("첫번째 배열 입력 : \n");
+    for (int i = 0; i < a; i++)
     {
-        temp = str1[length - i - 1];
-        str1[length - i - 1] = str1[i];
-        str1[i] = temp;
-
-        temp = str2[length - i - 1];
-        str2[length - i - 1] = str2[i];
-        str2[i] = temp;
+        for (int j = 0; j < b; j++)
+        {
+            scanf("%d", &arr[i][j]);
+        }
     }
 
-    int num1, num2 = 0; // 문자로 변환된 숫자 저장할 변수
-    // sscanf(str1, "%d", &num1); -> 문자열을 숫자로 변환하는 함수
-
-    // 숫자로 변환
-    num1 = ((str1[0] - '0') * 100) + ((str1[1] - '0') * 10) + (str1[2] - '0');
-    num2 = ((str2[0] - '0') * 100) + ((str2[1] - '0') * 10) + (str2[2] - '0');
-
-    // 크기 비교
-    if (num1 > num2)
+    // 두번째 배열
+    /*
+    3 3 3
+    4 4 4
+    5 5 100
+    */
+    printf("두번째 배열 입력 : \n");
+    for (int i = 0; i < a; i++)
     {
-        printf("%d\n", num1);
+        for (int j = 0; j < b; j++)
+        {
+            scanf("%d", &arr2[i][j]);
+        }
     }
-    else
+
+    printf("sum 출력\n");
+    int sum[a][b];
+    // sum[0][0] = arr[0][0] + arr2[0][0];
+    // sum[1][1] = arr[1][1] + arr2[1][1];
+
+    for (int i = 0; i < a; i++)
     {
-        printf("%d\n", num2);
+        for (int j = 0; j < b; j++)
+        {
+            sum[i][j] = arr[i][j] + arr2[i][j];
+        }
+    }
+    // printf("%d\n", sum[0][0]);
+    // printf("%d\n", sum[1][1]);
+
+    for (int i = 0; i < a; i++)
+    {
+        for (int j = 0; j < b; j++)
+        {
+            printf("%d ", sum[i][j]);
+        }
+        printf("\n");
     }
 
     return 0;
