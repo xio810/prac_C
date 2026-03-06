@@ -4,67 +4,39 @@
 
 int main()
 {
-    // 백준 2738
+    // 백준 2566번
+    printf("배열 입력\n");
+    int arr[9][9];
+    int length = 3;
 
-    printf("배열 크기 입력 : \n");
-    int arr[100][100];
-    int arr2[100][100];
-    int a = 0, b = 0;
-    scanf("%d %d", &a, &b);
-
-    // 첫번째 배열
-    /*
-    1 1 1
-    2 2 2
-    0 1 0
-    */
-    printf("첫번째 배열 입력 : \n");
-    for (int i = 0; i < a; i++)
+    // 배열안에 값 넣기
+    for (int i = 0; i < length; i++)
     {
-        for (int j = 0; j < b; j++)
+        for (int j = 0; j < length; j++)
         {
             scanf("%d", &arr[i][j]);
         }
     }
 
-    // 두번째 배열
-    /*
-    3 3 3
-    4 4 4
-    5 5 100
-    */
-    printf("두번째 배열 입력 : \n");
-    for (int i = 0; i < a; i++)
+    // 배열 안에서 최댓값 찾기
+    int max = arr[0][0];
+    int row = 0;    // 행
+    int column = 0; // 열
+    for (int i = 0; i < length; i++)
     {
-        for (int j = 0; j < b; j++)
+        for (int j = 0; j < length; j++)
         {
-            scanf("%d", &arr2[i][j]);
+            if (max < arr[i][j])
+            {
+                max = arr[i][j];
+                row = i;
+                column = j;
+            }
         }
     }
 
-    printf("sum 출력\n");
-    int sum[a][b];
-    // sum[0][0] = arr[0][0] + arr2[0][0];
-    // sum[1][1] = arr[1][1] + arr2[1][1];
-
-    for (int i = 0; i < a; i++)
-    {
-        for (int j = 0; j < b; j++)
-        {
-            sum[i][j] = arr[i][j] + arr2[i][j];
-        }
-    }
-    // printf("%d\n", sum[0][0]);
-    // printf("%d\n", sum[1][1]);
-
-    for (int i = 0; i < a; i++)
-    {
-        for (int j = 0; j < b; j++)
-        {
-            printf("%d ", sum[i][j]);
-        }
-        printf("\n");
-    }
+    printf("max : %d\n", max);
+    printf("%d %d\n", row + 1, column + 1);
 
     return 0;
 }
