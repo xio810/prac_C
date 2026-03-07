@@ -4,39 +4,29 @@
 
 int main()
 {
-    // 백준 2566번
+    // 백준 10798번
     printf("배열 입력\n");
-    int arr[9][9];
-    int length = 3;
+    char str[5][16] = {0};
+    int length = 5;
 
     // 배열안에 값 넣기
     for (int i = 0; i < length; i++)
     {
-        for (int j = 0; j < length; j++)
-        {
-            scanf("%d", &arr[i][j]);
-        }
+        scanf("%s", str[i]);
     }
 
-    // 배열 안에서 최댓값 찾기
-    int max = arr[0][0];
-    int row = 0;    // 행
-    int column = 0; // 열
-    for (int i = 0; i < length; i++)
+    // 세로줄 출력
+    for (int i = 0; i < 15; i++)
     {
-        for (int j = 0; j < length; j++)
+        for (int j = 0; j < 5; j++)
         {
-            if (max < arr[i][j])
+            if (str[j][i] != '\0' && str[j][i] != 0)
             {
-                max = arr[i][j];
-                row = i;
-                column = j;
+                printf("%c", str[j][i]);
             }
         }
     }
-
-    printf("max : %d\n", max);
-    printf("%d %d\n", row + 1, column + 1);
-
+    // printf("%c [%c]", str[0][0], str[2][3]);
+    printf("\n");
     return 0;
 }
