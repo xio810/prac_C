@@ -4,29 +4,44 @@
 
 int main()
 {
-    // 백준 10798번
+    // 백준 2563번
+    // 가로, 세로의 크기가 각각 10인 정사각형
+
+    printf("색종이의 수 : ");
+    int color_paper_num = 0;
+    scanf("%d", &color_paper_num);
+
     printf("배열 입력\n");
-    char str[5][16] = {0};
-    int length = 5;
+    int arr[100][100] = {0};
+    // 색종이 붙일 위치 받을 변수
+    int x, y;
 
-    // 배열안에 값 넣기
-    for (int i = 0; i < length; i++)
+    for (int i = 0; i < color_paper_num; i++)
     {
-        scanf("%s", str[i]);
-    }
-
-    // 세로줄 출력
-    for (int i = 0; i < 15; i++)
-    {
-        for (int j = 0; j < 5; j++)
+        scanf("%d %d", &x, &y); // 좌표(3,7)
+        for (int j = x; j < x + 10; j++)
         {
-            if (str[j][i] != '\0' && str[j][i] != 0)
+            for (int k = y; k < y + 10; k++)
             {
-                printf("%c", str[j][i]);
+                arr[j][k] = 1;
             }
         }
     }
-    // printf("%c [%c]", str[0][0], str[2][3]);
-    printf("\n");
+
+    // 1인 배열 개수 세기
+    int count = 0;
+
+    for (int i = 0; i < 100; i++)
+    {
+        for (int j = 0; j < 100; j++)
+        {
+            if (arr[i][j] == 1)
+            {
+                count++;
+            }
+        }
+    }
+
+    printf("%d\n", count);
     return 0;
 }
