@@ -4,44 +4,24 @@
 
 int main()
 {
-    // 백준 2563번
-    // 가로, 세로의 크기가 각각 10인 정사각형
+    // 백준 3003
 
-    printf("색종이의 수 : ");
-    int color_paper_num = 0;
-    scanf("%d", &color_paper_num);
+    // 킹,퀸,룩,비숍,나이트,폰
+    int chess[7] = {1, 1, 2, 2, 2, 8};
 
-    printf("배열 입력\n");
-    int arr[100][100] = {0};
-    // 색종이 붙일 위치 받을 변수
-    int x, y;
-
-    for (int i = 0; i < color_paper_num; i++)
+    // 찾은 흰색 체크 개수 입력
+    printf("입력 : \n");
+    int white[7] = {0};
+    for (int i = 0; i < 6; i++)
     {
-        scanf("%d %d", &x, &y); // 좌표(3,7)
-        for (int j = x; j < x + 10; j++)
-        {
-            for (int k = y; k < y + 10; k++)
-            {
-                arr[j][k] = 1;
-            }
-        }
+        scanf("%d", &white[i]);
     }
 
-    // 1인 배열 개수 세기
-    int count = 0;
-
-    for (int i = 0; i < 100; i++)
+    for (int i = 0; i < 6; i++)
     {
-        for (int j = 0; j < 100; j++)
-        {
-            if (arr[i][j] == 1)
-            {
-                count++;
-            }
-        }
+
+        printf("%d ", chess[i] - white[i]);
     }
 
-    printf("%d\n", count);
     return 0;
 }
