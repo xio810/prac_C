@@ -4,42 +4,39 @@
 
 int main()
 {
-    // 백준 2444
-    // 다이아몬드 찍기
+    // 백준 10988
+    // 회문(팰린드롬) 확인
+    // 회문이면 1 출력, 아니면 0 출력
 
-    int length = 5;
+    printf("단어 입력 : \n");
+    char str[100] = "";
+    scanf("%s", str);
 
-    // 위 다이아몬드
-    for (int i = 1; i <= length; i++)
+    // 길이
+    int length = strlen(str);
+
+    // 대문자 -> 소문자
+    for (int i = 0; str[i] != '\0'; i++)
     {
-        for (int k = length - i; k > 0; k--)
+        if ('A' <= str[i] && str[i] <= 'Z')
         {
-            printf(" ");
+            str[i] = str[i] + 32;
         }
-
-        for (int j = 0; j < (2 * i) - 1; j++)
-        {
-            printf("*");
-        }
-        printf("\n");
     }
 
-    // 아래 다이아몬드
-    for (int i = 1; i <= length - 1; i++)
-    {
-        // 공백 1~4로 늘어남
-        for (int k = 0; k < i; k++)
-        {
-            printf(" ");
-        }
-        // 별 7개부터 줄어들기
-        for (int j = 2 * (length - i) - 1; j > 0; j--)
-        {
-            printf("*");
-        }
+    // 회문판독
+    int count = 1;
 
-        printf("\n");
+    for (int i = 0; i < length / 2; i++)
+    {
+        if (str[i] != str[length - i - 1])
+        {
+            count = 0;
+            break;
+        }
     }
+
+    printf("%d\n", count);
 
     return 0;
 }
