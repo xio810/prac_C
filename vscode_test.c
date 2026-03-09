@@ -4,23 +4,41 @@
 
 int main()
 {
-    // 백준 3003
+    // 백준 2444
+    // 다이아몬드 찍기
 
-    // 킹,퀸,룩,비숍,나이트,폰
-    int chess[7] = {1, 1, 2, 2, 2, 8};
+    int length = 5;
 
-    // 찾은 흰색 체크 개수 입력
-    printf("입력 : \n");
-    int white[7] = {0};
-    for (int i = 0; i < 6; i++)
+    // 위 다이아몬드
+    for (int i = 1; i <= length; i++)
     {
-        scanf("%d", &white[i]);
+        for (int k = length - i; k > 0; k--)
+        {
+            printf(" ");
+        }
+
+        for (int j = 0; j < (2 * i) - 1; j++)
+        {
+            printf("*");
+        }
+        printf("\n");
     }
 
-    for (int i = 0; i < 6; i++)
+    // 아래 다이아몬드
+    for (int i = 1; i <= length - 1; i++)
     {
+        // 공백 1~4로 늘어남
+        for (int k = 0; k < i; k++)
+        {
+            printf(" ");
+        }
+        // 별 7개부터 줄어들기
+        for (int j = 2 * (length - i) - 1; j > 0; j--)
+        {
+            printf("*");
+        }
 
-        printf("%d ", chess[i] - white[i]);
+        printf("\n");
     }
 
     return 0;
