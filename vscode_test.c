@@ -4,39 +4,39 @@
 
 int main()
 {
-    // 백준 10988
-    // 회문(팰린드롬) 확인
-    // 회문이면 1 출력, 아니면 0 출력
+    // 백준 1157
+    // 많이나온 알파벳 출력
+    // 많이 나온 알파벳이 겹치면 ? 출력
 
     printf("단어 입력 : \n");
-    char str[100] = "";
+    char str[1000001] = "";
     scanf("%s", str);
 
-    // 길이
-    int length = strlen(str);
+    // 소->대 변경, 알파벳배열에 글자 개수 넣기
+    int alphabet[26] = {0};
 
-    // 대문자 -> 소문자
-    for (int i = 0; str[i] != '\0'; i++)
+    for (int i = 0; i < strlen(str); i++)
     {
-        if ('A' <= str[i] && str[i] <= 'Z')
+        alphabet[toupper(str[i]) - 'A']++;
+    }
+
+    // 알파벳 배열 안에서 최대값 찾기
+    int max = -1;
+    char letter;
+    for (int i = 0; i < 26; i++)
+    {
+        if (max < alphabet[i])
         {
-            str[i] = str[i] + 32;
+            max = alphabet[i];
+            letter = i + 'A'; // letter변수에 0+'A'해서 다시 문자로 만들기
+        }
+        else if (alphabet[i] == max && max != 0)
+        {
+            letter = '?';
         }
     }
 
-    // 회문판독
-    int count = 1;
-
-    for (int i = 0; i < length / 2; i++)
-    {
-        if (str[i] != str[length - i - 1])
-        {
-            count = 0;
-            break;
-        }
-    }
-
-    printf("%d\n", count);
+    printf("%c\n", letter);
 
     return 0;
 }
