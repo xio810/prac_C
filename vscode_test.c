@@ -28,50 +28,26 @@ double calculate_gpa(struct Subject subjects[])
         // A+ & A0 은 4.5 & 4.0
         if (subjects[i].score[0] == 'A')
         {
-            if (subjects[i].score[1] == '+')
-            {
-                score_num = 4.5;
-            }
-            else if (subjects[i].score[1] == '0')
-            {
-                score_num = 4.0;
-            }
+            score_num = (subjects[i].score[1] == '+') ? 4.5 : 4.0;
         }
+
         // B+ & B0 은 3.5 & 3.0
         if (subjects[i].score[0] == 'B')
         {
-            if (subjects[i].score[1] == '+')
-            {
-                score_num = 3.5;
-            }
-            else if (subjects[i].score[1] == '0')
-            {
-                score_num = 3.0;
-            }
+
+            score_num = (subjects[i].score[1] == '+') ? 3.5 : 3.0;
         }
+
         // C+ & C0 은 2.5 & 2.0
         if (subjects[i].score[0] == 'C')
         {
-            if (subjects[i].score[1] == '+')
-            {
-                score_num = 2.5;
-            }
-            else if (subjects[i].score[1] == '0')
-            {
-                score_num = 2.0;
-            }
+            score_num = (subjects[i].score[1] == '+') ? 2.5 : 2.0;
         }
+
         // D+ & D0 은 1.5 & 1.0
         if (subjects[i].score[0] == 'D')
         {
-            if (subjects[i].score[1] == '+')
-            {
-                score_num = 1.5;
-            }
-            else if (subjects[i].score[1] == '0')
-            {
-                score_num = 1.0;
-            }
+            score_num = (subjects[i].score[1] == '+') ? 1.5 : 1.0;
         }
         // F는 0.0
         if (subjects[i].score[0] == 'F')
