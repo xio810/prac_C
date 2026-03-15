@@ -4,38 +4,47 @@
 int main()
 {
     // 백준 2745
-    //  ZZZZZ 36 입력
+    //  ZZ 36 입력 -> 1295
 
     printf("입력:\n");
 
-    char str[37] = ""; // ZZZ
-    int jin = 0;       // 진법
-    scanf("%s %d", str, &jin);
+    int number = 0; // 1295
+    int jin = 0;    // 진법 36
+    scanf("%d %d", &number, &jin);
 
-    int length = strlen(str);
+    char alph[100];
 
-    int result = 0;
-    int mul = 1;
+    int mox = 0; // 몫
+    int ext = 0; // 나머지
 
-    for (int i = length - 1; i >= 0; i--)
+    int i = 0; // 알파벳배열 ++ 용도
+
+    while (number > 0)
     {
-        int num = 0;
+        mox = number / jin;
+        ext = number % jin;
 
-        if ('A' <= str[i] && str[i] <= 'Z')
+        if (ext < 10)
         {
-            num = str[i] - 'A' + 10;
+            alph[i] = ext + '0';
         }
         else
         {
-            num = str[i] - '0';
+            alph[i] = ext + 'A' - 10;
         }
 
-        result += mul * num;
+        i++;
 
-        mul = mul * jin;
+        number = mox;
     }
 
-    printf("%d ", result);
+    // printf("%d %d \n", mox, ext);
+
+    for (int j = i - 1; j >= 0; j--)
+    {
+        printf("%c", alph[j]);
+    }
+    printf("\n");
 
     return 0;
 }
