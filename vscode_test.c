@@ -3,48 +3,45 @@
 #include <ctype.h>  //소->대 char upper = toupper(소문자변수); //대->소 tolower(변수)
 int main()
 {
-    // 백준 2745
-    //  ZZ 36 입력 -> 1295
 
-    printf("입력:\n");
+    printf("몇번 입력 받을 지 : ");
+    int test_case = 0;
+    scanf("%d", &test_case);
 
-    int number = 0; // 1295
-    int jin = 0;    // 진법 36
-    scanf("%d %d", &number, &jin);
+    printf("금액 입력 : \n");
+    int num = 0;
+    int coins[4] = {25, 10, 5, 1};
+    int count[4] = {0};
 
-    char alph[100];
-
+    // 몫과 나머지
     int mox = 0; // 몫
-    int ext = 0; // 나머지
+    int nam = 0; // 나머지
 
-    int i = 0; // 알파벳배열 ++ 용도
-
-    while (number > 0)
+    while (test_case--)
     {
-        mox = number / jin;
-        ext = number % jin;
+        scanf("%d", &num);
 
-        if (ext < 10)
+        for (int i = 0; i < 4; i++)
         {
-            alph[i] = ext + '0';
+            mox = num / coins[i];
+            nam = num % coins[i];
+
+            if (num < coins[i])
+            {
+                count[i] = 0;
+            }
+            else
+            {
+
+                count[i] = mox;
+            }
+
+            printf("%d ", count[i]);
+
+            num = nam;
         }
-        else
-        {
-            alph[i] = ext + 'A' - 10;
-        }
-
-        i++;
-
-        number = mox;
+        printf("\n");
     }
-
-    // printf("%d %d \n", mox, ext);
-
-    for (int j = i - 1; j >= 0; j--)
-    {
-        printf("%c", alph[j]);
-    }
-    printf("\n");
 
     return 0;
 }
