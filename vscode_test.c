@@ -7,7 +7,7 @@ int main()
     long long bee; // 찾으려는 방 번호
     scanf("%lld", &bee);
 
-    int layer = 0;
+    int layer = 1;
     int i = 0;
     int num = 1;
 
