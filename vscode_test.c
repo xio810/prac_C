@@ -4,26 +4,21 @@
 int main()
 {
 
-    printf("숫자입력 : ");
-    //(2n제곱+1)제곱
-    // 2 -> 3 -> 5 -> 9 -> 17
-    // 4 -> 9 -> 25 ...
-    // 1번 입력 하면 9
-    int num = 0;
-    scanf("%d", &num);
+    long long bee; // 찾으려는 방 번호
+    scanf("%lld", &bee);
 
-    int mul = 1; // 곱하는 값
-    int result = 0;
+    int layer = 0;
+    int i = 0;
+    int num = 1;
 
-    for (int i = 0; i < num; i++)
+    while (bee > num)
     {
-        mul = mul * 2;
+        i++;
+        num = num + (6 * i);
+        layer++;
     }
-    int ex = mul + 1;
 
-    result = ex * ex;
-
-    printf("%d\n", result);
+    printf("%d\n", layer);
 
     return 0;
 }
