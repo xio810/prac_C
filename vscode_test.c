@@ -3,22 +3,26 @@
 #include <ctype.h>  //소->대 char upper = toupper(소문자변수); //대->소 tolower(변수)
 int main()
 {
+    printf("=>");
 
-    long long bee; // 찾으려는 방 번호
-    scanf("%lld", &bee);
+    int number = 0;
+    scanf("%d", &number);
 
-    int layer = 1;
-    int i = 0;
-    int num = 1;
-
-    while (bee > num)
+    int line = 1;
+    while (number > line)
     {
-        i++;
-        num = num + (6 * i);
-        layer++;
+        number = number - line;
+        line++;
     }
 
-    printf("%d\n", layer);
+    if (line % 2 == 0) // 짝수
+    {
+        printf("%d/%d\n", number, line - number + 1);
+    }
+    else
+    {
+        printf("%d/%d\n", line - number + 1, number);
+    }
 
     return 0;
 }
