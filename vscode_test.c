@@ -5,24 +5,15 @@ int main()
 {
     printf("=>");
 
-    int number = 0;
-    scanf("%d", &number);
+    int climb = 0;
+    int down = 0;
+    int height = 0;
+    scanf("%d %d %d", &climb, &down, &height);
 
-    int line = 1;
-    while (number > line)
-    {
-        number = number - line;
-        line++;
-    }
+    long long days = 0;
+    days = (height - days - 1) / (climb - days) + 1;
 
-    if (line % 2 == 0) // 짝수
-    {
-        printf("%d/%d\n", number, line - number + 1);
-    }
-    else
-    {
-        printf("%d/%d\n", line - number + 1, number);
-    }
+    printf("%lld\n", days);
 
     return 0;
 }
