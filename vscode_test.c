@@ -3,17 +3,33 @@
 #include <ctype.h>  //소->대 char upper = toupper(소문자변수); //대->소 tolower(변수)
 int main()
 {
-    printf("=>");
+    printf("===>");
 
-    int climb = 0;
-    int down = 0;
-    int height = 0;
-    scanf("%d %d %d", &climb, &down, &height);
+    int first = 0;
+    int second = 0;
 
-    long long days = 0;
-    days = (height - days - 1) / (climb - days) + 1;
+    while (1)
+    {
+        scanf("%d %d", &first, &second);
 
-    printf("%lld\n", days);
+        if (first == 0 && second == 0)
+        {
+            break;
+        }
+
+        if (second % first == 0)
+        {
+            printf("factor\n");
+        }
+        else if (first % second == 0)
+        {
+            printf("multiple\n");
+        }
+        else
+        {
+            printf("neither\n");
+        }
+    }
 
     return 0;
 }
