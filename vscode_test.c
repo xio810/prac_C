@@ -4,31 +4,29 @@
 int main()
 {
     printf("===>");
+    // 6 3 예시
+    int divisor = 0; // 6의 약수
+    int num = 0;     // 3번째로 작은 수 출력
+    scanf("%d %d", &divisor, &num);
 
-    int first = 0;
-    int second = 0;
+    int count = 0;
 
-    while (1)
+    for (int i = 1; i <= divisor; i++)
     {
-        scanf("%d %d", &first, &second);
+        if (divisor % i == 0)
+        {
+            count++;
+            if (count == num)
+            {
+                printf("%d ", i);
+                break;
+            }
+        }
+    }
 
-        if (first == 0 && second == 0)
-        {
-            break;
-        }
-
-        if (second % first == 0)
-        {
-            printf("factor\n");
-        }
-        else if (first % second == 0)
-        {
-            printf("multiple\n");
-        }
-        else
-        {
-            printf("neither\n");
-        }
+    if (count < num)
+    {
+        printf("0\n");
     }
 
     return 0;
