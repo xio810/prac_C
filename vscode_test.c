@@ -6,25 +6,45 @@ int main()
 {
     printf("===>");
 
-    int divisor = 0; // 6의 약수
-    int num = 0;     // 3번째로 작은 수 출력
-    scanf("%d %d", &divisor, &num);
-
-    int arr[10000] = {0}; // 약수담기
-
-    int j = 0;
-
-    for (int i = 1; i <= divisor; i++)
+    while (1)
     {
-        if (divisor % i == 0)
+        int divisor = 0; // 약수
+        int arr[100] = {0};
+        int j = 0;
+        int sum = 0;
+
+        scanf("%d", &divisor);
+
+        if (divisor == -1)
         {
-            arr[j] = i;
-            j++;
+            break;
+        }
+
+        for (int i = 1; i < divisor; i++)
+        {
+            if (divisor % i == 0) // 나눠서 약수인애들만
+            {
+                arr[j] = i;
+                sum += i; // 약수 다 더해서 divisor값이 나오는지
+                j++;
+            }
+        }
+
+        if (divisor == sum)
+        {
+            printf("%d = %d", divisor, arr[0]);
+
+            for (int i = 1; i < j; i++)
+            {
+                printf(" + %d", arr[i]);
+            }
+            printf("\n");
+        }
+        else if (divisor != sum)
+        {
+            printf("%d is NOT perfect.\n", divisor);
         }
     }
-
-    // 출력
-    printf("%d ", arr[num - 1]);
 
     return 0;
 }
