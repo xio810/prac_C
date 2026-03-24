@@ -8,10 +8,10 @@ int main()
 
     while (1)
     {
-        int divisor = 0; // 약수
-        int arr[100] = {0};
+        int divisor = 0;    // 약수
+        int sum = 0;        // 약수들 더한값
+        int arr[100] = {0}; // 약수저장
         int j = 0;
-        int sum = 0;
 
         scanf("%d", &divisor);
 
@@ -22,14 +22,14 @@ int main()
 
         for (int i = 1; i < divisor; i++)
         {
-            if (divisor % i == 0) // 나눠서 약수인애들만
+            if (divisor % i == 0)
             {
                 arr[j] = i;
-                sum += i; // 약수 다 더해서 divisor값이 나오는지
+                sum += i;
                 j++;
             }
         }
-
+        // arr[0]=1, [1]=2, [2]=3
         if (divisor == sum)
         {
             printf("%d = %d", divisor, arr[0]);
@@ -40,9 +40,9 @@ int main()
             }
             printf("\n");
         }
-        else if (divisor != sum)
+        else
         {
-            printf("%d is NOT perfect.\n", divisor);
+            printf("%d is NOT perfect\n", divisor);
         }
     }
 
