@@ -5,46 +5,37 @@
 int main()
 {
     printf("===>");
+    // 입력 받을 수
+    int num = 0;
+    scanf("%d", &num);
 
-    while (1)
+    // 소수인지 판별할 수들 넣는 배열
+    int arr[100] = {0};
+
+    for (int i = 0; i < num; i++)
     {
-        int divisor = 0;    // 약수
-        int sum = 0;        // 약수들 더한값
-        int arr[100] = {0}; // 약수저장
-        int j = 0;
+        scanf("%d", &arr[i]);
+    }
 
-        scanf("%d", &divisor);
+    int total = 0;
+    for (int i = 0; i < num; i++)
+    {
+        int count = 0;
 
-        if (divisor == -1)
+        for (int j = 1; j <= arr[i]; j++)
         {
-            break;
-        }
-
-        for (int i = 1; i < divisor; i++)
-        {
-            if (divisor % i == 0)
+            if (arr[i] % j == 0)
             {
-                arr[j] = i;
-                sum += i;
-                j++;
+                count++;
             }
         }
-        // arr[0]=1, [1]=2, [2]=3
-        if (divisor == sum)
+        if (count == 2)
         {
-            printf("%d = %d", divisor, arr[0]);
-
-            for (int i = 1; i < j; i++)
-            {
-                printf(" + %d", arr[i]);
-            }
-            printf("\n");
-        }
-        else
-        {
-            printf("%d is NOT perfect\n", divisor);
+            total++;
         }
     }
+
+    printf("%d ", total);
 
     return 0;
 }
