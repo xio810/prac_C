@@ -6,41 +6,27 @@ int main()
 {
     printf("===>");
     // 입력 받을 수
-    int bottom, high = 0;
-    scanf("%d %d", &bottom, &high);
 
-    int sum = 0;
-    int min = -1; // 최솟값
+    int num = 0;
+    scanf("%d", &num);
 
-    for (int i = bottom; i <= high; i++)
+    int i = 2;
+    if (num == 1)
     {
-        int count = 0;
-
-        for (int k = 1; k <= i; k++)
-        {
-            if (i % k == 0)
-            {
-                count++;
-            }
-        }
-        if (count == 2)
-        {
-            sum += i;
-            if (min == -1)
-            {
-                min = i;
-            }
-        }
+        return 0;
     }
 
-    if (sum == 0)
+    while (num > 1)
     {
-        printf("-1\n");
-    }
-    else
-    {
-        printf("%d\n", sum);
-        printf("%d\n", min);
+        if (num % i == 0)
+        {
+            printf("%d\n", i);
+            num = num / i;
+        }
+        else
+        {
+            i++;
+        }
     }
 
     return 0;
