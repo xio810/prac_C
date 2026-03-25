@@ -6,36 +6,42 @@ int main()
 {
     printf("===>");
     // 입력 받을 수
-    int num = 0;
-    scanf("%d", &num);
+    int bottom, high = 0;
+    scanf("%d %d", &bottom, &high);
 
-    // 소수인지 판별할 수들 넣는 배열
-    int arr[100] = {0};
+    int sum = 0;
+    int min = -1; // 최솟값
 
-    for (int i = 0; i < num; i++)
-    {
-        scanf("%d", &arr[i]);
-    }
-
-    int total = 0;
-    for (int i = 0; i < num; i++)
+    for (int i = bottom; i <= high; i++)
     {
         int count = 0;
 
-        for (int j = 1; j <= arr[i]; j++)
+        for (int k = 1; k <= i; k++)
         {
-            if (arr[i] % j == 0)
+            if (i % k == 0)
             {
                 count++;
             }
         }
         if (count == 2)
         {
-            total++;
+            sum += i;
+            if (min == -1)
+            {
+                min = i;
+            }
         }
     }
 
-    printf("%d ", total);
+    if (sum == 0)
+    {
+        printf("-1\n");
+    }
+    else
+    {
+        printf("%d\n", sum);
+        printf("%d\n", min);
+    }
 
     return 0;
 }
