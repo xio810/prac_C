@@ -6,28 +6,11 @@ int main()
 {
     printf("===>");
     // 입력 받을 수
+    int a, b = 0;
+    scanf("%d %d", &a, &b);
 
-    int num = 0;
-    scanf("%d", &num);
+    int mul = a * b;
 
-    int i = 2;
-    if (num == 1)
-    {
-        return 0;
-    }
-
-    while (num > 1)
-    {
-        if (num % i == 0)
-        {
-            printf("%d\n", i);
-            num = num / i;
-        }
-        else
-        {
-            i++;
-        }
-    }
-
+    printf("%d ", mul);
     return 0;
 }
