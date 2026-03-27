@@ -6,38 +6,44 @@ int main()
 {
     printf("===>");
     // 입력 받을 수
-    int x1, y1, x2, y2, x3, y3 = 0;
-    int x4, y4 = 0;
+    int dot[3][2] = {0};
+    int x4, y4;
 
-    scanf("%d %d %d %d %d %d", &x1, &y1, &x2, &y2, &x3, &y3);
-
-    if (x1 == x2)
+    for (int i = 0; i < 3; i++)
     {
-        x4 = x3;
+        scanf("%d %d", &dot[i][0], &dot[i][1]);
     }
-    else if (x2 == x3)
+
+    // 5 5 , 5 7, 7 5
+    // x
+    if (dot[0][0] == dot[1][0])
     {
-        x4 = x1;
+        x4 = dot[2][0];
+    }
+    else if (dot[0][0] == dot[2][0])
+    {
+        x4 = dot[1][0];
     }
     else
     {
-        x4 = x2;
+        x4 = dot[0][0];
     }
 
-    if (y1 == y3)
+    // y
+    if (dot[0][1] == dot[2][1])
     {
-        y4 = y2;
+        y4 = dot[1][1];
     }
-    else if (y2 == y3)
+    else if (dot[0][1] == dot[1][1])
     {
-        y4 = y1;
+        y4 = dot[2][1];
     }
     else
     {
-        y4 = y3;
+        y4 = dot[0][1];
     }
 
-    printf("(%d %d)\n", x4, y4);
-
+    printf("======\n");
+    printf("%d %d\n", x4, y4);
     return 0;
 }
