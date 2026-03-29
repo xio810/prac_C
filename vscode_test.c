@@ -23,24 +23,42 @@ int main()
             break;
         }
 
-        if (one + two <= three || one + three <= two || two + three <= one)
+        // max구하기
+        int max = one;
+
+        if (two > max)
+        {
+            max = two;
+        }
+        if (three > max)
+        {
+            max = three;
+        }
+
+        // max보다 두변 더한 값이 안크면 ㅇㅇ출력
+        int sum = one + two + three;   // 세 변 다 더한 값
+        int remaining_sum = sum - max; // 제일 긴 변 아닌 두 변 더한 값
+
+        if (remaining_sum <= max)
         {
             printf("Invalid\n");
         }
-
-        // Equilateral :  세 변의 길이가 모두 같은 경우
-        else if (one == two && two == three && one == three)
-        {
-            printf("Equilateral\n");
-        }
-        else if (one == two || two == three || three == one)
-        {
-
-            printf("Isosceles\n");
-        }
         else
         {
-            printf("Scalene\n");
+            // Equilateral :  세 변의 길이가 모두 같은 경우
+            if (one == two && two == three && one == three)
+            {
+                printf("Equilateral\n");
+            }
+            else if (one == two || two == three || three == one)
+            {
+
+                printf("Isosceles\n");
+            }
+            else
+            {
+                printf("Scalene\n");
+            }
         }
     }
 
