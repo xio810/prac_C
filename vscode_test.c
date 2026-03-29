@@ -4,46 +4,46 @@
 
 int main()
 {
-    printf("===>");
+    printf("ʚ₍ ᐢ. ̫ .ᐢ ₎ɞ ➜ ");
     // 입력 받을 수
-    int dot[3][2] = {0};
-    int x4, y4;
+    int turn = 0; // 점의개수
+    scanf("%d", &turn);
 
-    for (int i = 0; i < 3; i++)
-    {
-        scanf("%d %d", &dot[i][0], &dot[i][1]);
-    }
+    int x, y = 0;
 
-    // 5 5 , 5 7, 7 5
-    // x
-    if (dot[0][0] == dot[1][0])
-    {
-        x4 = dot[2][0];
-    }
-    else if (dot[0][0] == dot[2][0])
-    {
-        x4 = dot[1][0];
-    }
-    else
-    {
-        x4 = dot[0][0];
-    }
+    /*
+    3
+    20 24
+    40 21
+    10 12
+    */
+    int garo = 0;
+    int sero = 0;
+    int result = 0;
 
-    // y
-    if (dot[0][1] == dot[2][1])
+    int min_x = 10001, max_x = -10001;
+    int min_y = 10001, max_y = -10001;
+
+    for (int i = 0; i < turn; i++)
     {
-        y4 = dot[1][1];
-    }
-    else if (dot[0][1] == dot[1][1])
-    {
-        y4 = dot[2][1];
-    }
-    else
-    {
-        y4 = dot[0][1];
+        scanf("%d %d", &x, &y);
+
+        if (x < min_x)
+            min_x = x;
+        if (x > max_x)
+            max_x = x;
+        if (y < min_y)
+            min_y = y;
+        if (y > max_y)
+            max_y = y;
     }
 
-    printf("======\n");
-    printf("%d %d\n", x4, y4);
+    garo = max_x - min_x;
+    sero = max_y - min_y;
+
+    result = garo * sero;
+
+    printf("%d ", result);
+
     return 0;
 }
