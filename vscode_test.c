@@ -5,45 +5,34 @@
 int main()
 {
     printf("ʚ₍ ᐢ. ̫ .ᐢ ₎ɞ ➜ ");
-    // 입력 받을 수
-    int turn = 0; // 점의개수
-    scanf("%d", &turn);
 
-    int x, y = 0;
+    // 백준 10101
 
-    /*
-    3
-    20 24
-    40 21
-    10 12
-    */
-    int garo = 0;
-    int sero = 0;
-    int result = 0;
+    int one, two, three = 0;
 
-    int min_x = 10001, max_x = -10001;
-    int min_y = 10001, max_y = -10001;
+    scanf("%d %d %d", &one, &two, &three);
 
-    for (int i = 0; i < turn; i++)
+    if (one == 60 && two == 60 && three == 60)
     {
-        scanf("%d %d", &x, &y);
-
-        if (x < min_x)
-            min_x = x;
-        if (x > max_x)
-            max_x = x;
-        if (y < min_y)
-            min_y = y;
-        if (y > max_y)
-            max_y = y;
+        printf("Equilateral\n");
     }
-
-    garo = max_x - min_x;
-    sero = max_y - min_y;
-
-    result = garo * sero;
-
-    printf("%d ", result);
+    else if (one + two + three == 180)
+    {
+        // 세 각의 합이 180이고, 두 각이 같은 경우에는 Isosceles
+        if (one == two || two == three || one == three)
+        {
+            printf("Isosceles\n");
+        }
+        else
+        {
+            printf("Scalene\n");
+        }
+        // 세 각의 합이 180이고, 같은 각이 없는 경우에는 Scalene
+    }
+    else
+    {
+        printf("Error");
+    }
 
     return 0;
 }
