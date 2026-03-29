@@ -6,60 +6,35 @@ int main()
 {
     printf("ʚ₍ ᐢ. ̫ .ᐢ ₎ɞ ➜ ");
 
-    /*
-    Equilateral :  세 변의 길이가 모두 같은 경우
-    Isosceles : 두 변의 길이만 같은 경우
-    Scalene : 세 변의 길이가 모두 다른 경우
-    */
-    while (1)
+    int one, two, three = 0;
+
+    scanf("%d %d %d", &one, &two, &three);
+
+    int max = one;
+    if (max < two)
     {
-        int one, two, three = 0;
+        max = two;
+    }
+    if (max < three)
+    {
+        max = three;
+    }
 
-        scanf("%d %d %d", &one, &two, &three);
+    int sum = one + two + three;
+    int two_sum = sum - max;
 
-        // break
-        if (one == 0 && two == 0 && three == 0)
-        {
-            break;
-        }
+    // printf(" %d %d ", sum, two_sum);
 
-        // max구하기
-        int max = one;
+    if (max < two_sum)
+    {
+        printf("%d\n", sum);
+    }
 
-        if (two > max)
-        {
-            max = two;
-        }
-        if (three > max)
-        {
-            max = three;
-        }
-
-        // max보다 두변 더한 값이 안크면 ㅇㅇ출력
-        int sum = one + two + three;   // 세 변 다 더한 값
-        int remaining_sum = sum - max; // 제일 긴 변 아닌 두 변 더한 값
-
-        if (remaining_sum <= max)
-        {
-            printf("Invalid\n");
-        }
-        else
-        {
-            // Equilateral :  세 변의 길이가 모두 같은 경우
-            if (one == two && two == three && one == three)
-            {
-                printf("Equilateral\n");
-            }
-            else if (one == two || two == three || three == one)
-            {
-
-                printf("Isosceles\n");
-            }
-            else
-            {
-                printf("Scalene\n");
-            }
-        }
+    // 길이가 긴 변이, 나머지 두 변 합보다 길 경우
+    if (max >= two_sum)
+    {
+        max = two_sum - 1; // 10 5 4 가정, max를 8로 바꾼다.
+        printf("%d\n", max + two_sum);
     }
 
     return 0;
