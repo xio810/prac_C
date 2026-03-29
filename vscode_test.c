@@ -6,32 +6,42 @@ int main()
 {
     printf("ʚ₍ ᐢ. ̫ .ᐢ ₎ɞ ➜ ");
 
-    // 백준 10101
-
-    int one, two, three = 0;
-
-    scanf("%d %d %d", &one, &two, &three);
-
-    if (one == 60 && two == 60 && three == 60)
+    /*
+    Equilateral :  세 변의 길이가 모두 같은 경우
+    Isosceles : 두 변의 길이만 같은 경우
+    Scalene : 세 변의 길이가 모두 다른 경우
+    */
+    while (1)
     {
-        printf("Equilateral\n");
-    }
-    else if (one + two + three == 180)
-    {
-        // 세 각의 합이 180이고, 두 각이 같은 경우에는 Isosceles
-        if (one == two || two == three || one == three)
+        int one, two, three = 0;
+
+        scanf("%d %d %d", &one, &two, &three);
+
+        // break
+        if (one == 0 && two == 0 && three == 0)
         {
+            break;
+        }
+
+        if (one + two <= three || one + three <= two || two + three <= one)
+        {
+            printf("Invalid\n");
+        }
+
+        // Equilateral :  세 변의 길이가 모두 같은 경우
+        else if (one == two && two == three && one == three)
+        {
+            printf("Equilateral\n");
+        }
+        else if (one == two || two == three || three == one)
+        {
+
             printf("Isosceles\n");
         }
         else
         {
             printf("Scalene\n");
         }
-        // 세 각의 합이 180이고, 같은 각이 없는 경우에는 Scalene
-    }
-    else
-    {
-        printf("Error");
     }
 
     return 0;
