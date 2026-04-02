@@ -4,38 +4,27 @@
 
 int main()
 {
-    printf("ʚ₍ ᐢ. ̫ .ᐢ ₎ɞ ➜ ");
+    printf("ʚ₍ ᐢ. ̫ .ᐢ ₎ɞ ➜ \n");
 
-    int one, two, three = 0;
+    int sum;
+    int n = 5;
 
-    scanf("%d %d %d", &one, &two, &three);
-
-    int max = one;
-    if (max < two)
+    for (int i = 1; i <= n - 2; i++)
     {
-        max = two;
-    }
-    if (max < three)
-    {
-        max = three;
-    }
-
-    int sum = one + two + three;
-    int two_sum = sum - max;
-
-    // printf(" %d %d ", sum, two_sum);
-
-    if (max < two_sum)
-    {
-        printf("%d\n", sum);
+        for (int j = i + 1; j <= n - 1; j++)
+        {
+            for (int k = j + 1; k <= n; k++)
+            {
+                printf("\n{%d %d %d}\n", i, j, k);
+                sum = i * j * k;
+                printf("sum=%d", sum);
+            }
+            printf("\n");
+        }
+        printf("\n");
     }
 
-    // 길이가 긴 변이, 나머지 두 변 합보다 길 경우
-    if (max >= two_sum)
-    {
-        max = two_sum - 1; // 10 5 4 가정, max를 8로 바꾼다.
-        printf("%d\n", max + two_sum);
-    }
+    // printf("\n%d\n", result);
 
     return 0;
 }
