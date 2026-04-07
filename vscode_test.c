@@ -5,35 +5,34 @@
 int main()
 {
     printf("ʚ₍ ᐢ. ̫ .ᐢ ₎ɞ ➜ \n");
-    /*
-        f(n) = a1 * n0 + a0
-        f(n) 내 차 속도
-        a1 가속도
-        c 규정 속도
-        n0 약속지점(검사 시작 지점)
+    int n, m;
+    scanf("%d %d", &n, &m);
 
-    */
+    int arr[100];
+    int max_sum = 0;
 
-    int a1, a0, c, n0;
-    scanf("%d %d", &a1, &a0);
-    scanf("%d", &c);
-    scanf("%d", &n0);
-
-    int fx = a1 * n0 + a0;
-    // 조건 1
-    // 내 차의 속도가 규정속도보다 오버되면 안된다.
-
-    if ((fx <= c * n0) && (a1 <= c))
+    for (int i = 0; i < n; i++)
     {
-        printf("1\n");
-    }
-    else
-    {
-        printf("0\n");
+        scanf("%d", &arr[i]);
     }
 
-    // 조건 2
-    // 가속도 검사
+    // 3중 for문
+    for (int i = 0; i < n - 2; i++)
+    {
+        for (int j = i + 1; j < n - 1; j++)
+        {
+            for (int k = j + 1; k < n; k++)
+            {
+                int sum = arr[i] + arr[j] + arr[k];
+                if (sum <= m && sum > max_sum)
+                {
+                    max_sum = sum;
+                }
+            }
+        }
+    }
+
+    printf("%d\n", max_sum);
 
     return 0;
 }
